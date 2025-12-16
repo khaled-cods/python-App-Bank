@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bank.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pagetitle }}</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p>Welcome, {{ username }}!</p>
+        <p>Your balance: ${{ balance }}</p>
+
+        <form method="post" action="/deposit">
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="number" name="amount" placeholder="Deposit Amount" min="1" required>
+            <button type="submit" class="btn">Deposit</button>
+        </form>
+
+        <form method="post" action="/withdraw">
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="number" name="amount" placeholder="Withdraw Amount" min="1" required>
+            <button type="submit" class="btn">Withdraw</button>
+        </form>
+
+        <a href="/" class="btn">Logout</a>
+    </div>
+</body>
+</html>
